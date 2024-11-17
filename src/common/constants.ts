@@ -1,1 +1,3 @@
 export const IMAGE_LIST_LOADED = 'IMAGE_LIST_LOADED';
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGOUT = 'USER_LOGOUT';

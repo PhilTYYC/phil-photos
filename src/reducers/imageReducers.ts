@@ -1,4 +1,4 @@
-import { IMAGE_LIST_LOADED } from '../../common/constants'
+import { IMAGE_LIST_LOADED } from '../common/constants'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const imagesReducer = (state = {}, action: any) => {

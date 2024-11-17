@@ -21,7 +21,7 @@ export default class AxiosClient {
         this.instance = axios.create(options);
     }
 
-    send(method: string, path: string, params: string[], data: string) {
+    send(method: string, path: string, params: any, data: {}) {
         const sendOptions = {
             method,
             url: `${this.baseURL}/${path}`,
@@ -30,6 +30,11 @@ export default class AxiosClient {
             basic: '',
         };
         return this.instance.request(sendOptions);
+    }
+
+    post(path: string,  data: any) {
+        const url = `${this.baseURL}/${path}`;
+        return this.instance.post(url, data);
     }
 
     getBaseURL() {
