@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import ImageList from '../ImageViewer/ImageList';
 import Login from '../Login/LoginForm';
-import { AuthProvider } from 'src/hooks/useAuth';
+import { AuthProvider } from '../../hooks/useAuth';
 import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 import { Secret } from '../secret/Secret';
 

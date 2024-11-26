@@ -5,7 +5,7 @@ import {
     configureStore,
     isRejectedWithValue,
   } from '@reduxjs/toolkit';
-import usersReducer from "src/reducers/usersReducer";
+import usersReducer from "../store/users/userSlice";
 import { listenerMiddleware } from './listenerMiddleware';
 
 const appReducer = combineReducers ({
@@ -15,13 +15,16 @@ const appReducer = combineReducers ({
 export const rootReducer = (state: any, action: any) => {
     switch (action.type) {
         case 'login': {
-            const {
-                user,
-            } = state;
-        }
-    };
+          const {
+              users,
+              ...keep
+          } = state;
 
-    return appReducer({} as any, action);
+          return appReducer(keep as any, action);
+        }
+        default:
+          return appReducer(state, action);
+    };
 };
 
 const errorLoggingMiddleware: Middleware =

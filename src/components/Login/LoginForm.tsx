@@ -1,9 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import BackendConnector from 'src/connectors/backendConnector';
+import { useDispatch, useSelector } from 'react-redux';
+import BackendConnector from '../../connectors/backendConnector'
+import { RootState } from '../../store/store';
+import { login } from 'store/users/userSlice';
 
 export default function LoginForm() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
+
+    const user = useSelector((state: RootState) => state.users);
+    const dispatch = useDispatch();
     const connector = new BackendConnector();
 
     const usernameChange = (value) => {
@@ -21,8 +27,17 @@ export default function LoginForm() {
         console.log(e);
         console.log(username);
         console.log(password);
-        connector.login(username, password);
+        var result = await connector.login(username, password);
+
+        console.log(result);
+        if (result.status === 200) {
+            dispatch(login(result.data))
+        }
     }
+
+    useEffect(() => {
+        console.log({user});
+    }, user);
 
     return (
         <div className="Image-list-layout">
