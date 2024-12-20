@@ -5,6 +5,7 @@ export default function ImageList() {
     const [imageList, setImageList] = useState();
     const [selectedImageName, setSelectedImageName] = useState();
     const [image, setImage] = useState();
+
     const connector = new BackendConnector();
 
     const getImageList = async () => {      

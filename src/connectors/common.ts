@@ -1,8 +1,8 @@
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
 
 export default class AxiosClient {
-    instance: AxiosInstance;
     baseURL: string;
+    client: any;
 
     constructor(baseURL = null) {
         this.baseURL = baseURL || 'http://localhost:3030';
@@ -17,8 +17,8 @@ export default class AxiosClient {
                 timeout : 1000,
             }
         }
-
-        this.instance = axios.create(options);
+        
+        this.client = axios.create(options);
     }
 
     send(method: string, path: string, params: any, data: {}) {
@@ -29,12 +29,12 @@ export default class AxiosClient {
             data,
             basic: '',
         };
-        return this.instance.request(sendOptions);
+        return this.client.request(sendOptions);
     }
 
     post(path: string,  data: any) {
         const url = `${this.baseURL}/${path}`;
-        return this.instance.post(url, data);
+        return this.client.post(url, data);
     }
 
     getBaseURL() {

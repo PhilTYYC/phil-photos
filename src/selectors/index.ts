@@ -39,14 +39,14 @@ const errorLoggingMiddleware: Middleware =
 export const setupStore = (preloadedState?: Partial<AppState>) => {
     return configureStore({
       reducer: rootReducer,
-      middleware: getDefaultMiddleware => {
-        return getDefaultMiddleware({
-          immutableCheck: { warnAfter: 128 },
-          serializableCheck: false,
-        })
-          .concat(errorLoggingMiddleware)
-          .prepend(listenerMiddleware.middleware);
-      },
+      // middleware: getDefaultMiddleware => {
+      //   return getDefaultMiddleware({
+      //     immutableCheck: { warnAfter: 128 },
+      //     serializableCheck: false,
+      //   })
+      //     .concat(errorLoggingMiddleware)
+      //     .prepend(listenerMiddleware.middleware);
+      // },
       devTools: true,
       preloadedState,
     });

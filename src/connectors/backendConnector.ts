@@ -1,5 +1,4 @@
-import AxiosClient from "./common"
-// const crypto = require("crypto");
+import AxiosClient from './common';
 
 export default class BackendConnector extends AxiosClient {
     async getImageList() {
@@ -19,7 +18,6 @@ export default class BackendConnector extends AxiosClient {
     }
 
     async login(username: string, password: string) {
-        // const hash =  crypto.createHash('sha256').update(password).digest('hex');
         const reqData = {
             username,
             password,
